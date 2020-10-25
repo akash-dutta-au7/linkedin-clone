@@ -1,11 +1,17 @@
-import "./App.css";
-import Home from "./Pages/Home";
-import LandingPage from "./Pages/LandingPage";
+import { Fragment } from "react";
+import { Container } from "semantic-ui-react";
+import EventDashboard from "./Components/EventDashboard";
+import Navbar from "./Components/Navbar";
+
 function App() {
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <Fragment>
+      <Navbar />
+      <Container className="main">
+        {" "}
+        <EventDashboard />
+      </Container>
+    </Fragment>
   );
 }
 
