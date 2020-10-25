@@ -1,4 +1,4 @@
-export const events = [
+export const eventsData = [
   {
     id: "1",
     title: "Trip to Tower of London",
