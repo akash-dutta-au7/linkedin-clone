@@ -4,6 +4,7 @@ import EventListAttendee from "../EventListAttendee";
 
 class EventListItem extends Component {
   render() {
+    const { selectEvent, event } = this.props;
     const {
       hostPhotoURL,
       title,
@@ -12,7 +13,7 @@ class EventListItem extends Component {
       city,
       description,
       attendees,
-    } = this.props.event;
+    } = event;
     return (
       <Fragment>
         <Fragment>
@@ -43,7 +44,13 @@ class EventListItem extends Component {
             </Segment>
             <Segment clearing>
               <span>{description}</span>
-              <Button as="a" color="teal" floated="right" content="View" />
+              <Button
+                as="a"
+                color="teal"
+                floated="right"
+                content="View"
+                onClick={() => selectEvent(event)}
+              />
             </Segment>
           </Segment.Group>
         </Fragment>

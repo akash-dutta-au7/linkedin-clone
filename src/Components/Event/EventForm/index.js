@@ -21,7 +21,7 @@ class EventForm extends Component {
     });
   };
   render() {
-    const { handleIsOpenToggle } = this.props;
+    const { handleFormCancel } = this.props;
     const { title, date, city, venue, hostedBy, description } = this.state;
     return (
       <Fragment>
@@ -78,7 +78,7 @@ class EventForm extends Component {
             <Button positive type="submit">
               Submit
             </Button>
-            <Button type="button" onClick={handleIsOpenToggle}>
+            <Button type="button" onClick={handleFormCancel}>
               Cancel
             </Button>
           </Form>
