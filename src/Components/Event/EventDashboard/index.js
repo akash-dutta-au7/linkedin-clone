@@ -67,6 +67,22 @@ class EventDashboard extends Component {
     }, 1000);
   };
 
+  //update event
+
+  handleUpdateEvent = (updatedEvent) => {
+    this.setState(({ events }) => ({
+      events: events.map((currentEvent) => {
+        if (currentEvent.id === updatedEvent.id) {
+          return { ...updatedEvent };
+        } else {
+          return currentEvent;
+        }
+      }),
+      isOpen: false,
+      selectedEvent: null,
+    }));
+  };
+
   handleSelectEvent = (event) => {
     this.setState({
       selectedEvent: event,
@@ -87,7 +103,9 @@ class EventDashboard extends Component {
             </Button>
             {isOpen && (
               <EventForm
-                selectEvent={selectedEvent}
+                key={selectedEvent ? selectedEvent.id : 0}
+                updateEvent={this.handleUpdateEvent}
+                selectedEvent={selectedEvent}
                 createEvent={this.handleCreateEvent}
                 handleFormCancel={this.handleFormCancel}
               />
