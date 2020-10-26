@@ -2,33 +2,78 @@ import React, { Component, Fragment } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
 
 class EventForm extends Component {
+  state = {
+    title: "",
+    date: "",
+    city: "",
+    venue: "",
+    hostedBy: "",
+    description: "",
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.createEvent(this.state);
+    console.log(this.state);
+  };
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   render() {
     const { handleIsOpenToggle } = this.props;
+    const { title, date, city, venue, hostedBy, description } = this.state;
     return (
       <Fragment>
         <Segment>
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Event Title</label>
-              <input />
+              <input
+                name="title"
+                value={title}
+                onChange={this.handleInputChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>Event Date</label>
-              <input type="date" />
+              <input
+                type="date"
+                name="date"
+                value={date}
+                onChange={this.handleInputChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>City</label>
-              <input />
+              <input
+                name="city"
+                value={city}
+                onChange={this.handleInputChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>Venue</label>
-              <input />
+              <input
+                name="venue"
+                value={venue}
+                onChange={this.handleInputChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>Hosted By</label>
-              <input />
+              <input
+                name="hostedBy"
+                value={hostedBy}
+                onChange={this.handleInputChange}
+              />
             </Form.Field>
-            <Form.TextArea label="Description" />
+            <Form.TextArea
+              label="Description"
+              name="description"
+              value={description}
+              onChange={this.handleInputChange}
+            />
 
             <Button positive type="submit">
               Submit
