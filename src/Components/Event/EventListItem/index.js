@@ -4,7 +4,7 @@ import EventListAttendee from "../EventListAttendee";
 
 class EventListItem extends Component {
   render() {
-    const { selectEvent, event } = this.props;
+    const { selectEvent, event, deleteEvent } = this.props;
     const {
       hostPhotoURL,
       title,
@@ -44,6 +44,13 @@ class EventListItem extends Component {
             </Segment>
             <Segment clearing>
               <span>{description}</span>
+              <Button
+                as="a"
+                color="red"
+                floated="right"
+                content="Delete"
+                onClick={() => deleteEvent(event.id)}
+              />
               <Button
                 as="a"
                 color="teal"
